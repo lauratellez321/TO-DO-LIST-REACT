@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { Formulario } from "./components/Formulario";
+import { Tarea } from "./components/Tarea";
 
 function App() {
   const [tarea, setTarea] = useState("");
@@ -42,6 +43,14 @@ function App() {
             handleSubmit={handleSubmit}
             handleChange={handleChange}
           />
+        </div>
+        <div className="contenedorTareas">
+          <h2>Lista de Tareas</h2>
+          <div className="contenedorInfoTareas">
+            {listadoTareas.map((tarea) => (
+              <Tarea key={tarea.id} id={tarea.id} tarea={tarea} />
+            ))}
+          </div>
         </div>
       </div>
     </>
