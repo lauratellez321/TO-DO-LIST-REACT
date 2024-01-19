@@ -75,6 +75,13 @@ input {
 }
 
 .contenedorInfoTareas {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contenedorTarea {
   width: 80%;
   margin: 10px 0;
   padding: 10px;

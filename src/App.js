@@ -32,6 +32,24 @@ function App() {
     setTarea(e.target.value);
     console.log(tarea);
   }
+
+  function onActualizarTarea(objEditorTareas) {
+    const { id, tarea } = objEditorTareas;
+
+    const temp = [...listadoTareas];
+
+    const elemento = temp.find((item) => item.id === id);
+    elemento.tarea = tarea;
+
+    setListadoTareas(temp);
+  }
+
+  function onBorrarTarea(id) {
+    const temp = listadoTareas.filter((item) => item.id !== id);
+
+    setListadoTareas(temp);
+  }
+
   return (
     <>
       <div className="contenedorPrincipal">
@@ -48,7 +66,13 @@ function App() {
           <h2>Lista de Tareas</h2>
           <div className="contenedorInfoTareas">
             {listadoTareas.map((tarea) => (
-              <Tarea key={tarea.id} id={tarea.id} tarea={tarea} />
+              <Tarea
+                key={tarea.id}
+                id={tarea.id}
+                tarea={tarea}
+                onActualizarTarea={onActualizarTarea}
+                onBorrarTarea={onBorrarTarea}
+              />
             ))}
           </div>
         </div>
